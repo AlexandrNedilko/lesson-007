@@ -7,5 +7,4 @@ import java.lang.annotation.*;
 public @interface Test {
     int a();
     int b();
-
 }
