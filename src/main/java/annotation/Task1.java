@@ -17,13 +17,13 @@ public class Task1 {
             if (mthd.isAnnotationPresent(Test.class)) {
                 Test t = mthd.getAnnotation(Test.class);
                 int f = (Integer)mthd.invoke(null, t.a(),  t.b());
-                System.out.println("Результат должен быть равен трем, если метод сработал правильно. Результат: " + f);
+                System.out.println("Результат должен быть равен cем, если метод сработал правильно. Результат: " + f);
             }
         }
     }
 
-    @Test(a = 1, b = 2)
-    public static int method(int a, int b) {
+    @Test(a = 2, b = 5)
+    public static int test (int a, int b) {
         return a + b;
     }
 }
