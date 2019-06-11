@@ -24,6 +24,5 @@ public class Task1 {
 
     @Test(a = 2, b = 5)
     public static int test (int a, int b) {
-        return a + b;
-    }
+        return a + b; }
 }
