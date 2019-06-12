@@ -2,7 +2,8 @@ package Serializable;
 
 import java.io.FileWriter;
 import java.io.IOException;
-@SaveTo(PATH = "c:\\temp\\file.txt")
+//@SaveTo(PATH = "c:\\temp\\file.txt")
+@SaveTo(path = "c:\\temp\\file.txt")
 public class TestConteiner {
     String text = "text from textContainer";
 

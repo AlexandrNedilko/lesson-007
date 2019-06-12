@@ -65,7 +65,7 @@ public class Task3 {
             for (Method method : methods) {
                 if (method.isAnnotationPresent(Saver.class)) {
                     SaveTo saveTo = classClass.getAnnotation(SaveTo.class);
-                    method.invoke(testConteiner, testConteiner.text, saveTo.PATH());
+                    method.invoke(testConteiner, testConteiner.text, saveTo.path());
                 } else {
                     System.out.println("method is not annotated");
                 }
