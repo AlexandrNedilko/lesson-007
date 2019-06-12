@@ -1,13 +1,10 @@
 /*"3. Написать код, который сериализирует и десериализирует в/из файла все значения полей класса, которые
         отмечены аннотацией @Save."
 -- сначяла постарайтесь решить сами, еслы не выйдет - решение по задаче выложено, скопируйте и разберытесь
-
         "public class Main {
 public static void main(String[] args) throws IOException, InvocationTargetException, IllegalAccessException {
-
         TestConteiner testConteiner = new TestConteiner();
         Class<?> classClass = testConteiner.getClass();
-
         if (!classClass.isAnnotationPresent(SaveTo.class)) {
         System.out.println(""Class is not annotated"");
         } else {
@@ -23,9 +20,7 @@ public static void main(String[] args) throws IOException, InvocationTargetExcep
         }
         }
         }
-
         ---------------------------
-
 @Inherited
 @Retention(value = RetentionPolicy.RUNTIME)
 public @interface SaveTo {
@@ -40,7 +35,6 @@ public @interface Saver {
 @SaveTo(PATH = ""/home/roman/ROMA/JAVA................................./file.txt"")
 public class TestConteiner {
     String text = ""text from textContainer"";
-
     @Saver
     public void save(String text1, String path) throws IOException {
         FileWriter w = new FileWriter(path);
@@ -52,5 +46,30 @@ public class TestConteiner {
     }
 }"*/
 
+        package Serializable;
+
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 public class Task3 {
+    public static void main(String[] args) throws IOException, InvocationTargetException, IllegalAccessException {
+
+        TestConteiner testConteiner = new TestConteiner();
+        Class<?> classClass = testConteiner.getClass();
+
+        if (!classClass.isAnnotationPresent(SaveTo.class)) {
+            System.out.println("Class is not annotated");
+        } else {
+            Method[] methods = classClass.getMethods();
+            for (Method method : methods) {
+                if (method.isAnnotationPresent(Saver.class)) {
+                    SaveTo saveTo = classClass.getAnnotation(SaveTo.class);
+                    method.invoke(testConteiner, testConteiner.text, saveTo.PATH());
+                } else {
+                    System.out.println("method is not annotated");
+                }
+            }
+        }
+    }
 }
