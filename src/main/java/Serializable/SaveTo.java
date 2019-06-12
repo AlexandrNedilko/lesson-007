@@ -6,7 +6,7 @@ import java.lang.annotation.*;
 @Target(value = ElementType.TYPE)
 @Retention(value = RetentionPolicy.RUNTIME)
 @interface SaveTo {
-    String path() default "c:\\temp\\file2.txt";
+    String path() default "c:\\temp\\file.txt";
 
     //<method> method PATH(method);
 }
